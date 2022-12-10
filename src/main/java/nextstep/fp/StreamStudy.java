@@ -5,6 +5,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,11 +24,25 @@ public class StreamStudy {
         return count;
     }
 
-    public static void printLongestWordTop100() throws IOException {
+    public static List<String> printLongestWordTop100() throws IOException {
         String contents = new String(Files.readAllBytes(Paths
                 .get("src/main/resources/fp/war-and-peace.txt")), StandardCharsets.UTF_8);
         List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
+        // [O]단어의 길이가 12자를 초과하는 단어를 추출
+        // [O]12자가 넘는 단어중 길이가 긴 순서로 / 100개의 단어 추출
+        // [O]단어 중복 허용X, [O]모든 단어는 소문자로 출력
+        List<String> collect = words.stream()
+                                    .filter(word -> word.length() > 12)
+                                    .map(word -> word.toLowerCase())
+                                    .distinct()
+                                    .sorted(Comparator.comparing(String::length).reversed())
+                                    .limit(100)
+                                    .collect(Collectors.toList());
+        /*for (String s : collect) {
+            System.out.println(s);
 
+        }*/
+        return collect;
         // TODO 이 부분에 구현한다.
     }
 
@@ -39,6 +55,12 @@ public class StreamStudy {
     }
 
     public static long sumOverThreeAndDouble(List<Integer> numbers) {
-        return 0;
+        // 3보다 큰 숫자는 2배하고 모든값을 구한다.
+        // filter
+        Integer result =  numbers.stream()
+                                 .filter(number -> number > 3)
+                                 .map(number -> number * 2)
+                                 .reduce(Integer::sum).get();
+        return new Long(result);
     }
 }

@@ -1,5 +1,6 @@
 package nextstep.fp;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,16 @@ public class StreamStudyTest {
 
     @Test
     public void printLongestWordTop100() throws Exception {
-        StreamStudy.printLongestWordTop100();
+        // [O]단어의 길이가 12자를 초과하는 단어를 추출
+        // [O]12자가 넘는 단어중 길이가 긴 순서로 / 100개의 단어 추출
+        // [O]단어 중복 허용X, [O]모든 단어는 소문자로 출력
+        List<String> strings = StreamStudy.printLongestWordTop100();
+        Assertions.assertThat(strings.size()).isEqualTo(100); // 100개 인지?
+        for (String index : strings) {
+            Assertions.assertThat(index.length()).isGreaterThan(12); // 12자 초과
+            Assertions.assertThat(strings).containsOnlyOnce(index); // 중복확인
+            Assertions.assertThat(index).isLowerCase(); // 소문자 인지
+        }
     }
 
     @Test
