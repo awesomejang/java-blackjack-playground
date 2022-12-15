@@ -5,8 +5,8 @@ package nextstep.blackjack;
  * A,2~10,K,Q,J중 하나를 가지고 있다.
  */
 public class Card {
-    private String pattern;
-    private String denomination;
+    private String pattern;  // 패턴
+    private String denomination; // 숫자
 
     public String getPattern() {
         return pattern;
