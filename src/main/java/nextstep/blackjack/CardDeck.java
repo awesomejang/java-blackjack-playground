@@ -1,6 +1,7 @@
 package nextstep.blackjack;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,20 +16,40 @@ public class CardDeck {
     private List<Card> cards;
 
     public CardDeck() {
-        cards = new ArrayList<>();
+        cards = generateCards();
+    }
+
+    private List<Card> generateCards() {
+        List<Card> cards = new LinkedList<>();
 
         for (String patten : PATTENS) {
             for (int i = 0; i < CARD_COUNT; i++) {
-                Card card = new Card();
-                String denomination;
-
-                if(i == 1) {
-                    denomination = "A";
-                }else if(i == 11) {
-
-                }
+                String denomination = numberToDenomination(i);
+                Card card = new Card(patten, denomination);
+                cards.add(card);
             }
         }
-
+        return cards;
     }
+
+    private String numberToDenomination(int number) {
+        if(number == 1) {
+            return  "A";
+        }
+        if(number == 11) {
+            return  "J";
+        }
+        if(number == 12) {
+            return  "Q";
+        }
+        if(number == 13) {
+            return  "K";
+        }
+        return String.valueOf(number);
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
 }
