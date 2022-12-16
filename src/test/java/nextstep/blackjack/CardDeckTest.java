@@ -4,8 +4,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 
 public class CardDeckTest {
@@ -27,14 +29,12 @@ public class CardDeckTest {
             }
         }
     }
-
     @Test
-    void asdasd() {
-        LinkedList<Card> cards = new LinkedList<>();
-        Card card = new Card("A", "spade");
-        cards.add(card);
-        Card card2 = new Card("A", "spade");
-        System.out.println(cards.contains(card2));
+    @DisplayName("카드를 뽑으면 뽑힌 카드는 카드덱에서 제거된다.")
+    void randomTest() {
+        cardDeck = new CardDeck();
+        Card drawCard = cardDeck.draw();
+        Assertions.assertThat(cardDeck.getCards().contains(drawCard)).isFalse();
     }
 
     private String numberToDenomination(int number) {
