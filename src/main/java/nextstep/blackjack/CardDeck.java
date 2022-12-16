@@ -3,6 +3,7 @@ package nextstep.blackjack;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 카드를 플레이어, 딜러에게 제공
@@ -17,6 +18,21 @@ public class CardDeck {
 
     public CardDeck() {
         cards = generateCards();
+    }
+
+    // list 사이즈안에서 랜덤값 받아서
+    // 해당하는 list.get()후 list에서 제거 후
+    // 카드 리턴
+    public Card draw() {
+        Card card = getSelectedCard();
+        cards.remove(card);
+        return card;
+    }
+
+    private Card getSelectedCard() {
+        int size = cards.size();
+        int targetIndex = (int)(Math.random() * size);
+        return cards.get(targetIndex);
     }
 
     private List<Card> generateCards() {
