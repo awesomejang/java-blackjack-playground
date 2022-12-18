@@ -14,10 +14,12 @@ import java.util.Random;
 public class CardDeck {
     private static final String[] PATTENS = {"spade", "heart", "diamond", "club"};
     private static final int CARD_COUNT = 13;
-    private List<Card> cards;
+    private Cards cards;
+    //private List<Card> cards;
 
     public CardDeck() {
-        cards = generateCards();
+        new Cards(generateCards());
+        //cards = generateCards();
     }
 
     // list 사이즈안에서 랜덤값 받아서
@@ -25,14 +27,19 @@ public class CardDeck {
     // 카드 리턴
     public Card draw() {
         Card card = getSelectedCard();
-        cards.remove(card);
+        cards.removeCard(card);
+        //cards.remove(card);
         return card;
     }
 
+    /**
+     * 랜덤하게 카드를한장 뽑아 준다.
+     * @return
+     */
     private Card getSelectedCard() {
-        int size = cards.size();
+        int size = cards.getCardSize();
         int targetIndex = (int)(Math.random() * size);
-        return cards.get(targetIndex);
+        return cards.getCard(targetIndex);
     }
 
     private List<Card> generateCards() {
@@ -65,7 +72,7 @@ public class CardDeck {
     }
 
     public List<Card> getCards() {
-        return cards;
+        return cards.getCards();
     }
 
 }

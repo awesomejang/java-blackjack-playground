@@ -9,14 +9,16 @@ import java.util.List;
  * [] 2카드의 합계 점수가 16점 이하이면 반드시 1장을 추가로 뽑고, 17점 이상이면 받을 수 없다.
  */
 public class Dealer {
-    private List<Card> cards;
+    private Cards cards;
+    //private List<Card> cards;
 
     /**
      * 카드를 받는다.
      * @param card
      */
     public void receiveCard(Card card) {
-        cards.add(card);
+        cards.addCard(card);
+        //cards.add(card);
     }
 
     /**
@@ -24,6 +26,6 @@ public class Dealer {
      * @return
      */
     public List<Card> openCards() {
-        return cards;
+        return cards.getCards();
     }
 }
