@@ -24,5 +24,10 @@ public class Game {
 
         inputView.pringGetPlayers();
         String[] playerNames = inputView.getPlayersNames();
+        // 게이머 초기화
+        for(String name : playerNames) {
+            int bet  = inputView.getNumberInput();
+            gamers.add(new Gamer(name, bet));
+        }
     }
 }

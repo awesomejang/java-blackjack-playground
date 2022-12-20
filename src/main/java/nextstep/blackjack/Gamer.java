@@ -29,10 +29,19 @@ public class Gamer {
 //      return this.cards;
     }
 
+    /**
+     * 카드를 한장 받는다.
+     * @param card
+     */
     public void receiveCard(Card card) {
         this.cards.addCard(card);
         //cards.add(card);
     }
+
+    /**
+     * 현재 보유한 카드목록을 출력한다.
+     * @return
+     */
     public String showCards() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("현재 보유 카드목록 \n");
