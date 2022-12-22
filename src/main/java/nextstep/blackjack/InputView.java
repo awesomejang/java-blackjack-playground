@@ -41,6 +41,8 @@ public class InputView {
         return splitPlayerNames(stringInput);
     }
 
+
+
     /**
      * 플레이어 이름 받아서 배팅정보 요구
      * 입력값(배팅액) 리턴

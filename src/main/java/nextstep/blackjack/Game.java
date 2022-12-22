@@ -25,6 +25,7 @@ public class Game {
         this.gamers = new Gamers(inputView.initPlayers());
 
 
+
     }
 
     public static void main(String[] args) {
