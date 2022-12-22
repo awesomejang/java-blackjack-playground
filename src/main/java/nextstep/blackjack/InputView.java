@@ -1,5 +1,7 @@
 package nextstep.blackjack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,7 +15,22 @@ public class InputView {
         System.out.println(Constant.ANNOUNCE_GET_PLAYER_LIST);
     }
 
-    //public
+    /**
+     * 이름, 배팀금액을 받아 게이머를 초기화 한다.
+     * @return
+     */
+    public List<Gamer> initPlayers() {
+        List<Gamer> players = new ArrayList<>();
+
+        System.out.println(Constant.ANNOUNCE_GET_PLAYER_LIST);
+        String[] playersNames = getPlayersNames();
+
+        for (String playerName : playersNames) {
+            int playerBet = getPlayersBet(playerName);
+            players.add(new Gamer(playerName, playerBet));
+        }
+        return players;
+    }
 
     /**
      * 문자열을 입력받아 ','기준으로 분할하여 문자열 배열을 리턴한다.

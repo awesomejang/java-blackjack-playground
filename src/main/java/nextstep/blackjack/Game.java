@@ -22,13 +22,12 @@ public class Game {
         CardDeck cardDeck = new CardDeck();
         InputView inputView = new InputView();
 
-        //inputView.printGetPlayers();
-        String[] playerNames = inputView.getPlayersNames();
-        // 게이머 초기화
-        for(String name : playerNames) {
-            int bet  = inputView.getPlayersBet(name);
-            gamers.addGamer((new Gamer(name, bet)));
-        }
+        this.gamers = new Gamers(inputView.initPlayers());
 
+
+    }
+
+    public static void main(String[] args) {
+        new Game().play();
     }
 }

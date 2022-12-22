@@ -4,7 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Gamers {
-    private List<Gamer> gamers = new LinkedList<>();
+    private List<Gamer> gamers;
+    public Gamers(List<Gamer> gamers) {
+        this.gamers = gamers;
+    }
 
     /**
      * 게이머 추가
