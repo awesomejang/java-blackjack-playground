@@ -1,7 +1,6 @@
 package nextstep.blackjack;
 
 import java.util.List;
-import java.util.Scanner;
 
 // [] 게임의 참가자들을 보유한다.
 // [] 참가자들의 배팅 금액을 관리한다.
@@ -9,7 +8,8 @@ import java.util.Scanner;
 // 참여자이름, 배팅금액을 Gamer 필드에 넣고 푸는 방법을 생각해봐야할듯
 public class Game {
 
-    private List<Gamer> gamers;
+    //private List<Gamer> gamers;
+    private Gamers gamers;
 
     /**
      * 게임 실행
@@ -22,12 +22,13 @@ public class Game {
         CardDeck cardDeck = new CardDeck();
         InputView inputView = new InputView();
 
-        inputView.pringGetPlayers();
+        //inputView.printGetPlayers();
         String[] playerNames = inputView.getPlayersNames();
         // 게이머 초기화
         for(String name : playerNames) {
-            int bet  = inputView.getNumberInput();
-            gamers.add(new Gamer(name, bet));
+            int bet  = inputView.getPlayersBet(name);
+            gamers.addGamer((new Gamer(name, bet)));
         }
+
     }
 }

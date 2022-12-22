@@ -13,11 +13,10 @@ public class InputView {
         System.out.println(Constant.ANNOUNCE_GET_PLAYER_LIST);
     }
 
-
-
+    //public
 
     /**
-     * 참여자 이름을 받아 ','기준으로 split하여 리턴한다.
+     * 문자열을 입력받아 ','기준으로 분할하여 문자열 배열을 리턴한다.
      * @return
      */
     public String[] getPlayersNames(){
@@ -26,26 +25,24 @@ public class InputView {
     }
 
     /**
-     * 문자열 입력값을 받는다.
+     * 플레이어 이름 받아서 배팅정보 요구
+     * 입력값(배팅액) 리턴
+     * @param player
      * @return
      */
+    public int getPlayersBet(String player) {
+        System.out.println(String.format(Constant.ANNOUNCE_GET_PLATER_BET, player));
+        return getNumberInput();
+    }
+
     public String getStringInput() {
         return scanner.next();
     }
 
-    /**
-     * 숫자형 입력값을 받는다.
-     * @return
-     */
     public int getNumberInput() {
         return scanner.nextInt();
     }
 
-    /**
-     * name,name1 형식의 문자열을 ','기준으로 split한다.
-     * @param playerNames
-     * @return
-     */
     private String[] splitPlayerNames(String playerNames) {
         return playerNames.split(Constant.SPLIT_MARK_PLAYERS_NAME);
     }
