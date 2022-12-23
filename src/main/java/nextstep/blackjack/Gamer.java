@@ -53,5 +53,11 @@ public class Gamer {
         return stringBuilder.toString();
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public int getBetAmount() {
+        return betAmount;
+    }
 }

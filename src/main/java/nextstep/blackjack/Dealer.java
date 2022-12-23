@@ -28,4 +28,19 @@ public class Dealer {
     public List<Card> openCards() {
         return cards.getCards();
     }
+
+    /**
+     * 현재 보유한 카드목록을 출력한다.
+     * @return
+     */
+    public String showCards() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("현재 보유 카드목록 \n");
+
+        for (Card card : cards.getCards()) {
+            stringBuilder.append(card.toString());
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+    }
 }

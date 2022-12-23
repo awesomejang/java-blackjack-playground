@@ -10,6 +10,8 @@ public class Card {
     private String pattern;  // 패턴
     private String denomination; // 숫자
 
+    private int point; // 카드 점수
+
     public Card(String pattern, String denomination) {
         this.pattern = pattern;
         this.denomination = denomination;
