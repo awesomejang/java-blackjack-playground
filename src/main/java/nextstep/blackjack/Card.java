@@ -12,9 +12,11 @@ public class Card {
 
     private int point; // 카드 점수
 
-    public Card(String pattern, String denomination) {
+    //String denomination, int point
+    public Card(String pattern, int index) {
         this.pattern = pattern;
-        this.denomination = denomination;
+        this.denomination = numberToDenomination(index);
+        this.point = numberToPoint(index);
     }
 
     public String getPattern() {
@@ -49,5 +51,29 @@ public class Card {
         int result = pattern != null ? pattern.hashCode() : 0;
         result = 31 * result + (denomination != null ? denomination.hashCode() : 0);
         return result;
+    }
+
+    private String numberToDenomination(int number) {
+        if(number == 1) {
+            return  "A";
+        }
+        if(number == 11) {
+            return  "J";
+        }
+        if(number == 12) {
+            return  "Q";
+        }
+        if(number == 13) {
+            return  "K";
+        }
+        return String.valueOf(number);
+    }
+
+
+    private int numberToPoint(int number) {
+        if(number >= 11) {
+            return 10;
+        }
+        return number;
     }
 }

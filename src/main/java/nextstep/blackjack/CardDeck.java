@@ -46,29 +46,12 @@ public class CardDeck {
         List<Card> cards = new LinkedList<>();
 
         for (String patten : PATTENS) {
-            for (int i = 0; i < CARD_COUNT; i++) {
-                String denomination = numberToDenomination(i);
-                Card card = new Card(patten, denomination);
+            for (int i = 1; i <= CARD_COUNT; i++) {
+                Card card = new Card(patten, i);
                 cards.add(card);
             }
         }
         return cards;
-    }
-
-    private String numberToDenomination(int number) {
-        if(number == 1) {
-            return  "A";
-        }
-        if(number == 11) {
-            return  "J";
-        }
-        if(number == 12) {
-            return  "Q";
-        }
-        if(number == 13) {
-            return  "K";
-        }
-        return String.valueOf(number);
     }
 
     public List<Card> getCards() {
