@@ -9,7 +9,6 @@ import java.util.Objects;
 public class Card {
     private String pattern;  // 패턴
     private String denomination; // 숫자
-
     private int point; // 카드 점수
 
     //String denomination, int point
@@ -33,6 +32,10 @@ public class Card {
 
     public void setDenomination(String denomination) {
         this.denomination = denomination;
+    }
+
+    public int getPoint() {
+        return this.point;
     }
 
     @Override

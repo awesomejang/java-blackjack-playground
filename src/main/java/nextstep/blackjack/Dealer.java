@@ -17,7 +17,12 @@ public class Dealer {
      * @param card
      */
     public void receiveCard(Card card) {
-        cards.addCard(card);
+        if(isReceiveCard()) {
+            cards.addCard(card);
+            showCards();
+        }else {
+            System.out.println("보유한 카드의 점수가 17점 이상이기 때문에 카드를 받을 수 없습니다.");
+        }
         //cards.add(card);
     }
 
@@ -42,5 +47,24 @@ public class Dealer {
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * 보유한 카드의 점수 합계를 리턴한다.
+     */
+    private int getPointSum() {
+        int sum = 0;
+        for (Card card : cards.getCards()) {
+            sum += card.getPoint();
+        }
+        return sum;
+    }
+
+    /**
+     * 보유한 카드의 점수가 17점 이상인지 판단한다.
+     * @return
+     */
+    private boolean isReceiveCard() {
+        return this.getPointSum() <= Constant.DEALER_CAN_RECEIVE_POINT;
     }
 }
