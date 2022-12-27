@@ -12,4 +12,6 @@ public class Constant {
 
     public static final String SPLIT_MARK_PLAYERS_NAME =",";
 
+    public static final int DEALER_CAN_RECEIVE_POINT = 17;
+
 }
