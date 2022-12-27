@@ -35,6 +35,10 @@ public class Card {
         this.denomination = denomination;
     }
 
+    public int getPoint() {
+        return point;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

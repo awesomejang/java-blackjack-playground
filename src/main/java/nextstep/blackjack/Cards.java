@@ -28,4 +28,16 @@ public class Cards {
     public void removeCard(Card card) {
         cards.remove(card);
     }
+
+    /**
+     * 보유하고 있는 카드의 점수합계를 리턴한다.
+     * @return int
+     */
+    public int getpointSum() {
+        int sum = 0;
+        for (Card card : cards) {
+            sum += card.getPoint();
+        }
+        return sum;
+    }
 }
