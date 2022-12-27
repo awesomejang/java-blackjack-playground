@@ -17,7 +17,7 @@ public class Dealer {
      * @param card
      */
     public void receiveCard(Card card) {
-        if(cards.getpointSum() <= Constant.CAN_RECEIVE_DEALER_POINT) {
+        if(isReceiveCard()) {
             cards.addCard(card);
         }else {
             System.out.println("카드의 총 합이 17이상입니다. 더 이상 카드를 받을 수 없습니다.");
@@ -45,5 +45,9 @@ public class Dealer {
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    public boolean isReceiveCard() {
+        return cards.getpointSum() <= Constant.CAN_RECEIVE_DEALER_POINT;
     }
 }
