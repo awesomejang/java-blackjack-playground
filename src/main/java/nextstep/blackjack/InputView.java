@@ -17,7 +17,7 @@ public class InputView {
     }
 
     /**
-     * 이름, 배팀금액을 받아 게이머를 초기화 한다.
+     * 이름, 배팅금액을 받아 게이머를 초기화 한다.
      * @return
      */
     public List<Gamer> initPlayers() {
