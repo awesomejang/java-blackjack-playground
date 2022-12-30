@@ -1,6 +1,7 @@
 package nextstep.blackjack;
 
 import java.util.Objects;
+import java.util.StringJoiner;
 
 /**
  * 한개의 패턴(다이아, 하트, 스페이스, 클럽)중 한개
@@ -79,5 +80,10 @@ public class Card {
             return 10;
         }
         return number;
+    }
+
+    @Override
+    public String toString() {
+        return getDenomination() + getPattern();
     }
 }

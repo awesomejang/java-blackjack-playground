@@ -1,6 +1,7 @@
 package nextstep.blackjack;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * [x] 카드를 받는다
@@ -10,6 +11,7 @@ import java.util.List;
  */
 public class Dealer {
     private Cards cards;
+    private final String name = "딜러";
     //private List<Card> cards;
 
     /**
@@ -37,17 +39,21 @@ public class Dealer {
      * @return
      */
     public String showCards() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("현재 보유 카드목록 \n");
-
+        StringJoiner stringJoiner = new StringJoiner(Constant.SPLIT_MARK_PLAYERS_NAME);
+        //stringJoiner.add("현재 보유 카드목록 \n");
         for (Card card : cards.getCards()) {
-            stringBuilder.append(card.toString());
-            stringBuilder.append("\n");
+            stringJoiner.add(card.toString());
+            //stringJoiner.add("\n");
         }
-        return stringBuilder.toString();
+        return stringJoiner.toString();
     }
 
     public boolean isReceiveCard() {
         return cards.getpointSum() <= Constant.CAN_RECEIVE_DEALER_POINT;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }

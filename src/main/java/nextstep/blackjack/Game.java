@@ -21,20 +21,20 @@ public class Game {
         Rule rule = new Rule();
         CardDeck cardDeck = new CardDeck();
         InputView inputView = new InputView();
-
+        ResultView resultView = new ResultView();
         // 플레이어 초기화
         gamers = new Gamers(inputView.initPlayers());
 
-        //
+        //== 초기 카드 draw 메세지 ==//
         inputView.printFirstDraw(gamers.getGamers());
-
+        //== 카드 초기화 ==//
         for (int i = 0; i < Constant.TOTAL_CNT_INIT_CARD; i++) {
              dealer.receiveCard(cardDeck.draw());
-            for (int j = 0; j < gamers.gamerSize(); j++) {
-                 //gamers.
-
+            for (Gamer gamer : gamers.getGamers()) {
+                gamer.receiveCard(cardDeck.draw());
             }
         }
+        resultView.printInitCard(dealer, gamers);
 
 
 

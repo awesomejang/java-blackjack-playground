@@ -1,6 +1,7 @@
 package nextstep.blackjack;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * [x] 추가로 카드를 받는다.
@@ -43,14 +44,13 @@ public class Gamer {
      * @return
      */
     public String showCards() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("현재 보유 카드목록 \n");
-
+        StringJoiner stringJoiner = new StringJoiner(Constant.SPLIT_MARK_PLAYERS_NAME);
+        //stringJoiner.add("현재 보유 카드목록 \n");
         for (Card card : cards.getCards()) {
-            stringBuilder.append(card.toString());
-            stringBuilder.append("\n");
+            stringJoiner.add(card.toString());
+            //stringJoiner.add("\n");
         }
-        return stringBuilder.toString();
+        return stringJoiner.toString();
     }
 
     public String getName() {
