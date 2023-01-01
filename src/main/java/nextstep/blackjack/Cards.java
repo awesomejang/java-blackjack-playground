@@ -1,9 +1,13 @@
 package nextstep.blackjack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cards {
-    private List<Card> cards;
+    private List<Card> cards = new ArrayList<>();
+
+    public Cards() {
+    }
 
     public Cards(List<Card> cards) {
         this.cards = cards;

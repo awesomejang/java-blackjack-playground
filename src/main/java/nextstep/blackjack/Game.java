@@ -23,7 +23,7 @@ public class Game {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         // 플레이어 초기화
-        gamers = new Gamers(inputView.initPlayers());
+        this.gamers = new Gamers(inputView.initPlayers());
 
         //== 초기 카드 draw 메세지 ==//
         inputView.printFirstDraw(gamers.getGamers());

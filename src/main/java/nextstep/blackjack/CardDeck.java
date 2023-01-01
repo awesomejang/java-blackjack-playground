@@ -1,9 +1,7 @@
 package nextstep.blackjack;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * 카드를 플레이어, 딜러에게 제공
@@ -12,13 +10,14 @@ import java.util.Random;
  * 본인의 역할을 하기위해 무조건 카드가 있어야되기 때문에 생성자로 카드를 초기화
  */
 public class CardDeck {
-    private static final String[] PATTENS = {"spade", "heart", "diamond", "club"};
+    private static final String[] PATTENS = {"스페이드", "하트", "다이아몬드", "클로버"};
+    //private static final String[] PATTENS = {"spade", "heart", "diamond", "club"};
     private static final int CARD_COUNT = 13;
     private Cards cards;
     //private List<Card> cards;
 
     public CardDeck() {
-        new Cards(generateCards());
+        this.cards = new Cards(generateCards());
         //cards = generateCards();
     }
 

@@ -14,7 +14,7 @@ public class Gamer {
     //private List<Card> cards;
     private String name;
     private int betAmount;
-    private Cards cards;
+    private Cards cards = new Cards();
 
     public Gamer(String name, int betAmount) {
         this.name = name;
