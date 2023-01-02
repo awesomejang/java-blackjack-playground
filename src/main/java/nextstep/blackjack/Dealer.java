@@ -48,6 +48,10 @@ public class Dealer {
         return stringJoiner.toString();
     }
 
+    /**
+     * 딜러의 카드 합이 16이상인지 확인한다.
+     * @return
+     */
     public boolean isReceiveCard() {
         return cards.getpointSum() <= Constant.CAN_RECEIVE_DEALER_POINT;
     }
@@ -55,5 +59,7 @@ public class Dealer {
     public String getName() {
         return name;
     }
+
+
 
 }
