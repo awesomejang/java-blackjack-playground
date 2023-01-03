@@ -80,8 +80,16 @@ public class InputView {
      * @param gamer
      * @return String(y,n)
      */
-    public String isReceiveExtraCard(Gamer gamer) {
+    public boolean isReceiveExtraCard(Gamer gamer) {
         System.out.println(String.format(Constant.ANNOUNCE_RECEIVE_EXTRA_CARD, gamer.getName()));
-        return this.getStringInput();
+        return isReceiveExtraCard(this.getStringInput());
+    }
+
+    private boolean isReceiveExtraCard(String choice) {
+        boolean result = false;
+        if(Constant.CONTINUE_RECEIVE_CARD.equals(choice)) {
+            result = true;
+        }
+        return result;
     }
 }

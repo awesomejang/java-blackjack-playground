@@ -34,9 +34,13 @@ public class Game {
         }
         //== 게이머 추가 draw 로직 ==//
         while(true) {
-            // 딜러는 조건되면 한장만 추가
             // 게이머는 n할때 까지 계속 지급
-
+            for (Gamer gamer : gamers.getGamers()) {
+                if(inputView.isReceiveExtraCard(gamer)) {
+                    // 카드 받고
+                    // 보유 카드 출력
+                }
+            }
         }
 
 
