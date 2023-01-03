@@ -33,12 +33,10 @@ public class Game {
         resultView.printInitCard(dealer, gamers);
         //== 카드 추가 draw 로직 ==//
         while(true) {
-            // 딜러도 16이상이면
+            // 딜러는 조건되면 한장만 추가
+            // 게이머는 n할때 까지 계속 지급
 
         }
-        // 딜러는 조건되면 한장만 추가
-
-        // 게이머는 n할때 까지 계속 지급
 
 
     }

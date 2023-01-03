@@ -14,12 +14,23 @@ public class Gamer {
     //private List<Card> cards;
     private String name;
     private int betAmount;
+
+    private boolean turn; //== 카드받기 턴 ==//
     private Cards cards = new Cards();
 
     public Gamer(String name, int betAmount) {
         this.name = name;
         this.betAmount = betAmount;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBetAmount() {
+        return betAmount;
+    }
+
 
     /**
      * 카드를 오픈한다.
@@ -53,11 +64,20 @@ public class Gamer {
         return stringJoiner.toString();
     }
 
-    public String getName() {
-        return name;
+    public void turnOff() {
+        this.setTurn(false);
     }
 
-    public int getBetAmount() {
-        return betAmount;
+    public void turnOn() {
+        this.setTurn(true);
     }
+
+    private void setTurn(boolean turn) {
+        this.turn = turn;
+    }
+
+    public boolean isTurn() {
+        return this.turn;
+    }
+
 }

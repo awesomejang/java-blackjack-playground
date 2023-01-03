@@ -73,7 +73,15 @@ public class InputView {
         gamers.forEach(gamer -> playerNames.add(gamer.getName()));
 
         System.out.println(String.format(Constant.ANNOUNCE_INIT_GAME, playerNames.toString()));
+    }
 
-
+    /**
+     * 추가적인 카드 받는 여부를 입력받고 결과를 리턴한다.
+     * @param gamer
+     * @return String(y,n)
+     */
+    public String isReceiveExtraCard(Gamer gamer) {
+        System.out.println(String.format(Constant.ANNOUNCE_RECEIVE_EXTRA_CARD, gamer.getName()));
+        return this.getStringInput();
     }
 }

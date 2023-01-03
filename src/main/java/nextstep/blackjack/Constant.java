@@ -16,6 +16,8 @@ public class Constant {
     public static final String STOP_RECEIVE_CARD = "n";
     public static final String CONTINUE_RECEIVE_CARD = "y";
 
+    public static final String ANNOUNCE_RECEIVE_EXTRA_CARD = "%s는 한장의 카드를 더 받겠습니까?(예는 " + CONTINUE_RECEIVE_CARD + ", " + "아니요는 " + STOP_RECEIVE_CARD + ")";
+
     public static final String SPLIT_MARK_PLAYERS_NAME =",";
 
     public static final int DEALER_CAN_RECEIVE_POINT = 17;
