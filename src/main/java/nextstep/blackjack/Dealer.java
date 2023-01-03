@@ -12,7 +12,7 @@ import java.util.StringJoiner;
 public class Dealer {
     private Cards cards = new Cards();
     private final String name = "딜러";
-    //private List<Card> cards;
+
 
     /**
      * 카드를 받는다.
@@ -22,10 +22,10 @@ public class Dealer {
         if(isReceiveCard()) {
             cards.addCard(card);
         }else {
+
             System.out.println("카드의 총 합이 17이상입니다. 더 이상 카드를 받을 수 없습니다.");
         }
     }
-
     /**
      * 보유한 카드를 오픈한다.
      * @return
@@ -60,6 +60,15 @@ public class Dealer {
         return name;
     }
 
-
-
+    /**
+     * 카드 초기화 후 추가 카드를 받을 상황인지 확인한다.
+     * @return
+     */
+    public boolean isReceiveExtraCard() {
+        boolean result = false;
+        if(this.cards.getCardSize() <= 2 && isReceiveCard()) {
+            result = true;
+        }
+        return result;
+    }
 }

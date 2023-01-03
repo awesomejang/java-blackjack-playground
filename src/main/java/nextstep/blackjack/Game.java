@@ -22,16 +22,17 @@ public class Game {
         CardDeck cardDeck = new CardDeck();
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
-        // 플레이어 초기화
-        this.gamers = new Gamers(inputView.initPlayers());
+        this.gamers = new Gamers(inputView.initPlayers()); // 플레이어 초기화
 
-        //== 초기 카드 draw 메세지 ==//
-        inputView.printFirstDraw(gamers.getGamers());
-        //== 카드 초기화 ==//
-        initPhase(dealer, cardDeck);
-        //== 초기 카드결과 출력 ==//
-        resultView.printInitCard(dealer, gamers);
+        inputView.printFirstDraw(gamers.getGamers()); //== 초기 카드 draw 메세지 ==//
+        initPhase(dealer, cardDeck); //== 카드 초기화 ==//
+        resultView.printInitCard(dealer, gamers); //== 초기 카드결과 출력 ==//
+
         //== 카드 추가 draw 로직 ==//
+        if(dealer.isReceiveExtraCard()) {
+            dealer.receiveCard(cardDeck.draw());
+        }
+        //== 게이머 추가 draw 로직 ==//
         while(true) {
             // 딜러는 조건되면 한장만 추가
             // 게이머는 n할때 까지 계속 지급
