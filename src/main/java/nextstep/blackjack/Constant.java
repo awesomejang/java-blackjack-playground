@@ -13,6 +13,9 @@ public class Constant {
 
     public static final String ANNOUNCE_INIT_CARD_STATS = "%s카드: %s";
 
+    public static final String STOP_RECEIVE_CARD = "n";
+    public static final String CONTINUE_RECEIVE_CARD = "y";
+
     public static final String SPLIT_MARK_PLAYERS_NAME =",";
 
     public static final int DEALER_CAN_RECEIVE_POINT = 17;

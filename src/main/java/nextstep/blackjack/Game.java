@@ -28,25 +28,31 @@ public class Game {
         //== 초기 카드 draw 메세지 ==//
         inputView.printFirstDraw(gamers.getGamers());
         //== 카드 초기화 ==//
-        for (int i = 0; i < Constant.TOTAL_CNT_INIT_CARD; i++) {
-             dealer.receiveCard(cardDeck.draw());
-            for (Gamer gamer : gamers.getGamers()) {
-                gamer.receiveCard(cardDeck.draw());
-            }
-        }
+        initPhase(dealer, cardDeck);
+        //== 초기 카드결과 출력 ==//
         resultView.printInitCard(dealer, gamers);
-
         //== 카드 추가 draw 로직 ==//
-        /**
-        // 딜러는 조건되면 한장만 추가
-        // 게이머는 n할때 까지 계속 지급
-        **/
         while(true) {
+            // 딜러도 16이상이면
 
         }
+        // 딜러는 조건되면 한장만 추가
+
+        // 게이머는 n할때 까지 계속 지급
+
+
     }
 
     public static void main(String[] args) {
         new Game().play();
+    }
+
+    private void initPhase(Dealer dealer, CardDeck cardDeck) {
+        for (int i = 0; i < Constant.TOTAL_CNT_INIT_CARD; i++) {
+            dealer.receiveCard(cardDeck.draw());
+            for (Gamer gamer : gamers.getGamers()) {
+                gamer.receiveCard(cardDeck.draw());
+            }
+        }
     }
 }
