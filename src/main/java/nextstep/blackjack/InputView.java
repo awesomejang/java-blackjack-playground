@@ -82,7 +82,18 @@ public class InputView {
      */
     public boolean isReceiveExtraCard(Gamer gamer) {
         System.out.println(String.format(Constant.ANNOUNCE_RECEIVE_EXTRA_CARD, gamer.getName()));
-        return isReceiveExtraCard(this.getStringInput());
+        String choice = this.getStringInput();
+
+        System.out.println(choice);
+        return isReceiveExtraCard(choice);
+    }
+
+    /**
+     * 게이머의 현재 카드상태를 리턴한다.
+     * @param gamer
+     */
+    public void printGamerCardState(Gamer gamer) {
+        System.out.println(String.format(Constant.ANNOUNCE_INIT_CARD_STATS, gamer.getName(), gamer.showCards()));
     }
 
     private boolean isReceiveExtraCard(String choice) {

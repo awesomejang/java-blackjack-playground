@@ -15,4 +15,6 @@ public class ResultView {
             System.out.println(String.format(Constant.ANNOUNCE_INIT_CARD_STATS, gamer.getName(), gamer.showCards()));
         }
     }
+
+
 }
