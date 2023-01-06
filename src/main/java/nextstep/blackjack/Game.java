@@ -34,23 +34,13 @@ public class Game {
         }
         //== 게이머 추가 draw 로직 ==//
         while(true) {
-            // 게이머는 n할때 까지 계속 지급
-            for (Gamer gamer : gamers.getGamers()) {
-                boolean isAllPlayerTurnOff = false;
-                if(inputView.isReceiveExtraCard(gamer)) {
-                    // 카드 받고
-                    gamer.receiveCard(cardDeck.draw());
-                    // 보유 카드 출력
-                    System.out.println(gamer.showCards());
-                    gamer.turnOn();
-                }else {
-                    gamer.turnOff();
-                }
+            List<Gamer> cardReceivedPlayers = receiveCardAllPlayers(inputView, cardDeck);
+            if(isAllPlayerTurnOff(cardReceivedPlayers)) {
+                break;
             }
         }
-
-
     }
+
 
     public static void main(String[] args) {
         new Game().play();
@@ -63,5 +53,43 @@ public class Game {
                 gamer.receiveCard(cardDeck.draw());
             }
         }
+    }
+
+    /**
+     * 모든 플레이어 추가 카드 받는 여부 확인 후 y(추가 카드 draw), n(게이머 turnoff)
+     * @param inputView
+     * @param cardDeck
+     * @return
+     */
+    private List<Gamer> receiveCardAllPlayers(InputView inputView, CardDeck cardDeck) {
+        // 게이머는 n할때 까지 계속 지급
+        for (Gamer gamer : gamers.getGamers()) {
+            if(gamer.isTurn() && inputView.isReceiveExtraCard(gamer)) {
+                // 카드 받고
+                gamer.receiveCard(cardDeck.draw());
+                // 보유 카드 출력
+                inputView.printGamerCardState(gamer);
+                //System.out.println(gamer.showCards());
+                gamer.turnOn();
+                return gamers.getGamers();
+            }else {
+                gamer.turnOff();
+            }
+        }
+        return gamers.getGamers();
+    }
+
+    /**
+     * 모든 플레이어들의 turnoff 여부를 확인한다.
+     * @param gamers
+     * @return
+     */
+    private boolean isAllPlayerTurnOff(List<Gamer> gamers) {
+        for (Gamer gamer : gamers) {
+            if(gamer.isTurn()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

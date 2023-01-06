@@ -15,7 +15,7 @@ public class Gamer {
     private String name;
     private int betAmount;
 
-    private boolean turn; //== 카드받기 턴 ==//
+    private boolean turn = true; //== 카드받기 턴 ==//
     private Cards cards = new Cards();
 
     public Gamer(String name, int betAmount) {
