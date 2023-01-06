@@ -36,9 +36,15 @@ public class Game {
         while(true) {
             // 게이머는 n할때 까지 계속 지급
             for (Gamer gamer : gamers.getGamers()) {
+                boolean isAllPlayerTurnOff = false;
                 if(inputView.isReceiveExtraCard(gamer)) {
                     // 카드 받고
+                    gamer.receiveCard(cardDeck.draw());
                     // 보유 카드 출력
+                    System.out.println(gamer.showCards());
+                    gamer.turnOn();
+                }else {
+                    gamer.turnOff();
                 }
             }
         }
