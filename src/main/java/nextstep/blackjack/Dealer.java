@@ -13,7 +13,6 @@ public class Dealer {
     private Cards cards = new Cards();
     private final String name = "딜러";
 
-
     /**
      * 카드를 받는다.
      * @param card
@@ -22,7 +21,6 @@ public class Dealer {
         if(isReceiveCard()) {
             cards.addCard(card);
         }else {
-
             System.out.println("카드의 총 합이 17이상입니다. 더 이상 카드를 받을 수 없습니다.");
         }
     }
@@ -30,8 +28,8 @@ public class Dealer {
      * 보유한 카드를 오픈한다.
      * @return
      */
-    public List<Card> openCards() {
-        return cards.getCards();
+    public Cards openCards() {
+        return cards;
     }
 
     /**
@@ -71,4 +69,7 @@ public class Dealer {
         }
         return result;
     }
+
+
+
 }

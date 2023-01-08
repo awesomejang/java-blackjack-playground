@@ -28,19 +28,30 @@ public class Game {
         initPhase(dealer, cardDeck); //== 카드 초기화 ==//
         resultView.printInitCard(dealer, gamers); //== 초기 카드결과 출력 ==//
 
-        //== 카드 추가 draw 로직 ==//
+        List<Gamer> playingAfterPlayer = ExtraCardDraw(cardDeck, inputView);//== 게이머 추가 draw 로직 ==//
+        ExtraDrawDealer(dealer, cardDeck); //== 카드 추가 draw 로직 ==//
+
+        //== 게임 결과 출력 ==//
+        resultView.printResultCard(dealer, gamers.getGamers());
+
+    }
+
+    private void ExtraDrawDealer(Dealer dealer, CardDeck cardDeck) {
         if(dealer.isReceiveExtraCard()) {
             dealer.receiveCard(cardDeck.draw());
-            System.out.println("딜러는 16이하라 카드 한장을 더 받았습니다.");
+            System.out.println("딜러는 16이하라 카드 한장을 더 받았습니다. \n");
         }
+    }
 
-        //== 게이머 추가 draw 로직 ==//
+    private List<Gamer> ExtraCardDraw(CardDeck cardDeck, InputView inputView) {
+        List<Gamer> cardReceivedPlayers;
         while(true) {
-            List<Gamer> cardReceivedPlayers = receiveCardAllPlayers(inputView, cardDeck);
+            cardReceivedPlayers = receiveCardAllPlayers(inputView, cardDeck);
             if(isAllPlayerTurnOff(cardReceivedPlayers)) {
                 break;
             }
         }
+        return cardReceivedPlayers; 
     }
 
     public static void main(String[] args) {
@@ -66,11 +77,8 @@ public class Game {
         // 게이머는 n할때 까지 계속 지급
         for (Gamer gamer : gamers.getGamers()) {
             if(gamer.isTurn() && inputView.isReceiveExtraCard(gamer)) {
-                // 카드 받고
-                gamer.receiveCard(cardDeck.draw());
-                // 보유 카드 출력
-                inputView.printGamerCardState(gamer);
-                //System.out.println(gamer.showCards());
+                gamer.receiveCard(cardDeck.draw()); //== 카드 받고 ==//
+                inputView.printGamerCardState(gamer); //== 보유 카드 출력 ==//
                 gamer.turnOn();
                 return gamers.getGamers();
             }else {

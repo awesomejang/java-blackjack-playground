@@ -12,7 +12,7 @@ public class Constant {
     public static final String ANNOUNCE_INIT_GAME = "딜러와 %s에게 " + TOTAL_CNT_INIT_CARD + "장의 카드를 나누었습니다.";
 
     public static final String ANNOUNCE_INIT_CARD_STATS = "%s카드: %s";
-    public static final String ANNOUNCE_RESULT = ANNOUNCE_INIT_CARD_STATS +  "-" + "결과: %s"; //== 최종 카드 결과 표기 ==//
+    public static final String ANNOUNCE_RESULT = ANNOUNCE_INIT_CARD_STATS +  " - " + "결과: %s"; //== 최종 카드 결과 표기 ==//
 
     public static final String STOP_RECEIVE_CARD = "n";
     public static final String CONTINUE_RECEIVE_CARD = "y";

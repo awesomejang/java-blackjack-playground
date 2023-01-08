@@ -31,14 +31,12 @@ public class Gamer {
         return betAmount;
     }
 
-
     /**
      * 카드를 오픈한다.
      * @return
      */
-    public List<Card> openCards() {
-        return cards.getCards();
-//      return this.cards;
+    public Cards openCards() {
+        return cards;
     }
 
     /**

@@ -1,5 +1,6 @@
 package nextstep.blackjack;
 
+import java.util.List;
 import java.util.StringJoiner;
 
 public class ResultView {
@@ -16,5 +17,13 @@ public class ResultView {
         }
     }
 
-
+    /**
+     * 게임 결과 출력
+     */
+    public void printResultCard(Dealer dealer, List<Gamer> gamers) {
+        System.out.println(String.format(Constant.ANNOUNCE_RESULT, dealer.getName(), dealer.showCards(), dealer.openCards().getpointSum()));
+        for (Gamer gamer : gamers) {
+            System.out.println(String.format(Constant.ANNOUNCE_RESULT, gamer.getName(), gamer.showCards(), gamer.openCards().getpointSum()));
+        }
+    }
 }
