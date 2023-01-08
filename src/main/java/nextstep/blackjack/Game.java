@@ -31,7 +31,9 @@ public class Game {
         //== 카드 추가 draw 로직 ==//
         if(dealer.isReceiveExtraCard()) {
             dealer.receiveCard(cardDeck.draw());
+            System.out.println("딜러는 16이하라 카드 한장을 더 받았습니다.");
         }
+
         //== 게이머 추가 draw 로직 ==//
         while(true) {
             List<Gamer> cardReceivedPlayers = receiveCardAllPlayers(inputView, cardDeck);
@@ -40,7 +42,6 @@ public class Game {
             }
         }
     }
-
 
     public static void main(String[] args) {
         new Game().play();
