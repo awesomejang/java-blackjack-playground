@@ -9,6 +9,7 @@ public class Constant {
     public static final String ANNOUNCE_GET_PLATER_BET = "%s의 배팅 금액은?";
     public static final int TOTAL_CNT_INIT_CARD = 2;
     public static final int CAN_RECEIVE_DEALER_POINT = 16; // 딜러 초기 허용 최대 점수
+    public static final int NUMBER_BLACKJEK = 21; // 딜러 초기 허용 최대 점수
     public static final String ANNOUNCE_INIT_GAME = "딜러와 %s에게 " + TOTAL_CNT_INIT_CARD + "장의 카드를 나누었습니다.";
 
     public static final String ANNOUNCE_INIT_CARD_STATS = "%s카드: %s";
