@@ -18,7 +18,7 @@ public class ResultView {
     }
 
     /**
-     * 게임 결과 출력
+     * 게이머 카드 + 총 점수 출력(게임 결과)
      */
     public void printResultCard(Dealer dealer, List<Gamer> gamers) {
         System.out.println(String.format(Constant.ANNOUNCE_RESULT, dealer.getName(), dealer.showCards(), dealer.openCards().getpointSum()));
@@ -26,4 +26,6 @@ public class ResultView {
             System.out.println(String.format(Constant.ANNOUNCE_RESULT, gamer.getName(), gamer.showCards(), gamer.openCards().getpointSum()));
         }
     }
+
+
 }
