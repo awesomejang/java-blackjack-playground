@@ -24,16 +24,29 @@ public class Game {
         ResultView resultView = new ResultView();
         this.gamers = new Gamers(inputView.initPlayers()); // 플레이어 초기화
 
+
+
         inputView.printFirstDraw(gamers.getGamers()); //== 초기 카드 draw 메세지 ==//
         initPhase(dealer, cardDeck); //== 카드 초기화 ==//
         resultView.printInitCard(dealer, gamers); //== 초기 카드결과 출력 ==//
 
-        List<Gamer> playingAfterPlayer = ExtraCardDraw(cardDeck, inputView);//== 게이머 추가 draw 로직 ==//
-        ExtraDrawDealer(dealer, cardDeck); //== 카드 추가 draw 로직 ==//
+        List<Gamer> playingAfterPlayer = ExtraCardDraw(cardDeck, inputView); //== 게이머 추가 draw 로직 ==//
+        ExtraDrawDealer(dealer, cardDeck); //== 딜러 카드 추가 draw 로직 ==//
 
         //== 게임 결과 출력 ==//
         resultView.printResultCard(dealer, gamers.getGamers());
+        
+        
 
+    }
+    public static void main(String[] args) {
+        new Game().play();
+    }
+
+
+    private void endGame() {
+        System.out.print("게임종료");
+        Thread.currentThread().stop();
     }
 
     private void ExtraDrawDealer(Dealer dealer, CardDeck cardDeck) {
@@ -52,10 +65,6 @@ public class Game {
             }
         }
         return cardReceivedPlayers; 
-    }
-
-    public static void main(String[] args) {
-        new Game().play();
     }
 
     private void initPhase(Dealer dealer, CardDeck cardDeck) {

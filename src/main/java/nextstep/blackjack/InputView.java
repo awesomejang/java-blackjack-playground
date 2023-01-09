@@ -45,11 +45,11 @@ public class InputView {
     /**
      * 플레이어 이름 받아서 배팅정보 요구
      * 입력값(배팅액) 리턴
-     * @param player
+     * @param playerName
      * @return
      */
-    public int getPlayersBet(String player) {
-        System.out.println(String.format(Constant.ANNOUNCE_GET_PLATER_BET, player));
+    public int getPlayersBet(String playerName) {
+        System.out.println(String.format(Constant.ANNOUNCE_GET_PLATER_BET, playerName));
         return getNumberInput();
     }
 

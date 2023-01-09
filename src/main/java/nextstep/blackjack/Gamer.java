@@ -13,23 +13,29 @@ public class Gamer {
 
     //private List<Card> cards;
     private String name;
-    private int betAmount;
+    //private int betAmount;
+    private PlayerMoney playerMoney;
 
     private boolean turn = true; //== 카드받기 턴 ==//
     private Cards cards = new Cards();
 
-    public Gamer(String name, int betAmount) {
+    public Gamer(String name, int betMoney) {
         this.name = name;
-        this.betAmount = betAmount;
+        this.playerMoney = new PlayerMoney(betMoney);
+        //this.betAmount = betMoney;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getBetAmount() {
-        return betAmount;
+    public PlayerMoney getPlayerMoney() {
+        return playerMoney;
     }
+
+    /*public int getBetAmount() {
+        return betAmount;
+    }*/
 
     /**
      * 카드를 오픈한다.
