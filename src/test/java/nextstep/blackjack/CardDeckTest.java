@@ -22,7 +22,7 @@ public class CardDeckTest {
         List<Card> cards = cardDeck.getCards();
         for (String patten : PATTENS) {
             for (int i = 0; i < CARD_COUNT; i++) {
-                Card targetCard = new Card(patten, numberToDenomination(i));
+                Card targetCard = new Card(patten, i);
                 //System.out.println(targetCard.getDenomination() + " " + targetCard.getPattern());
                 Assertions.assertThat(cards.contains(targetCard)).isTrue();
 
