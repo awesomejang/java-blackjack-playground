@@ -35,7 +35,10 @@ public class Game {
 
         //== 게임 결과 출력 ==//
         resultView.printResultCard(dealer, gamers.getGamers());
-        
+
+        for (Gamer gamer : this.gamers.getGamers()) {
+            System.out.println(gamer.getPlayerMoney().getResultMoney());
+        }
         
 
     }
