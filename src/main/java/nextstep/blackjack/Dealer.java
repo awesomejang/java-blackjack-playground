@@ -69,7 +69,12 @@ public class Dealer {
         }
         return result;
     }
-
+    public boolean isBlackJek() {
+        if (this.cards.getpointSum() == Constant.NUMBER_BLACKJEK) {
+            return true;
+        }
+        return false;
+    }
 
 
 }

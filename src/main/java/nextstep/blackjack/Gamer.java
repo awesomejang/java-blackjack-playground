@@ -84,4 +84,12 @@ public class Gamer {
         return this.turn;
     }
 
+    public boolean isBlackJek() {
+        if (this.cards.getpointSum() == Constant.NUMBER_BLACKJEK) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

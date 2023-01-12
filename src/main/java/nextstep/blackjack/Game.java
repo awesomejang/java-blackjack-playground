@@ -32,12 +32,15 @@ public class Game {
         List<Gamer> playingAfterPlayer = ExtraCardDraw(cardDeck, inputView); //== 게이머 추가 draw 로직 ==//
         ExtraDrawDealer(dealer, cardDeck); //== 딜러 카드 추가 draw 로직 ==//
 
+        rule.DealerInitBlackJekEvent(dealer, gamers); //== 딜러가 21을 초과하면 배팅금액을 보너스로 지급==//
+
+
         //== 게임 결과 출력 ==//
         resultView.printResultCard(dealer, gamers.getGamers());
 
-        for (Gamer gamer : this.gamers.getGamers()) {
+        /*for (Gamer gamer : this.gamers.getGamers()) {
             System.out.println(gamer.getPlayerMoney().getResultMoney());
-        }
+        }*/
         
 
     }
