@@ -46,16 +46,15 @@ public class Rule {
     }
 
     //== 딜러가 21을 초과하면 플레이어들은 가지고 있는 패에 상관 없이 승리해 베팅 금액을 받는다. ==//
-    public Gamers DealerInitBlackJekEvent(Dealer dealer, Gamers gamers) {
+    public boolean isDealerInitBlackJek(Dealer dealer) {
         Cards dealerCards = dealer.openCards();
-
         if (isDealerOverLimit(dealerCards)) { // 딜러 21임?
-            bonusToPlayers(gamers);
+            return true;
         }
-        return gamers;
+        return false;
     }
 
-    private void bonusToPlayers(Gamers gamers) {
+    public void bonusToPlayers(Gamers gamers) {
         for (Gamer gamer : gamers.getGamers()) {
             PlayerMoney playerMoney = gamer.getPlayerMoney();
             playerMoney.calculateResultMoney(playerMoney.getBetMoney(), MoneyOperator.PLUS);
