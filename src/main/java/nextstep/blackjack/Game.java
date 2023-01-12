@@ -25,7 +25,6 @@ public class Game {
         this.gamers = new Gamers(inputView.initPlayers()); // 플레이어 초기화
 
 
-
         inputView.printFirstDraw(gamers.getGamers()); //== 초기 카드 draw 메세지 ==//
         initPhase(dealer, cardDeck); //== 카드 초기화 ==//
         resultView.printInitCard(dealer, gamers); //== 초기 카드결과 출력 ==//
