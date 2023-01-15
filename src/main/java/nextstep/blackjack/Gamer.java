@@ -9,7 +9,7 @@ import java.util.StringJoiner;
  * [x] 카드를 오픈한다.
  * [] 보유한 카드를 확인한다.
  */
-public class Gamer {
+public class Gamer implements Player{
 
     //private List<Card> cards;
     private String name;
@@ -83,13 +83,4 @@ public class Gamer {
     public boolean isTurn() {
         return this.turn;
     }
-
-    public boolean isBlackJek() {
-        if (this.cards.getpointSum() == Constant.NUMBER_BLACKJEK) {
-            return true;
-        }
-        return false;
-    }
-
-
 }
