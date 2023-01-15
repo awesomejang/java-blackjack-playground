@@ -32,12 +32,17 @@ public class Game {
         List<Gamer> playingAfterPlayer = ExtraCardDraw(cardDeck, inputView); //== 게이머 추가 draw 로직 ==//
         ExtraDrawDealer(dealer, cardDeck); //== 딜러 카드 추가 draw 로직 ==//
 
-        if(rule.isDealerInitBlackJek(dealer)) { //== 딜러가 21을 초과하면 배팅금액을 보너스로 지급==//
+        //== 딜러가 21을 초과하면 배팅금액을 보너스로 지급==//
+        if(rule.isDealerOverLimitPoint(dealer)) {
+            System.out.println("딜러 초과");
             rule.bonusToPlayers(gamers);
-            // 결과 출력
-
-            this.endGame();
+            //this.endGame(); // 결과 출력
+            return;
         }
+        //==첫 번째 draw 블랙잭 이벤트==//
+        Gamers noOverPlayers = rule.firstBlackJekEvent(this.gamers, dealer);
+        rule.getWinner(dealer, noOverPlayers);
+
 
 
         //== 게임 결과 출력 ==//

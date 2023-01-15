@@ -19,9 +19,12 @@ public class Gamers {
 
     public int gamerSize() {
         return gamers.size();
+
     }
 
     public List<Gamer> getGamers() {
         return gamers;
     }
+
+
 }
