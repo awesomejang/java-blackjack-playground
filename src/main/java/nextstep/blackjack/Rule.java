@@ -1,7 +1,5 @@
 package nextstep.blackjack;
 
-import com.sun.org.apache.bcel.internal.Const;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,23 +23,29 @@ public class Rule {
      * 승패를 판단한다.
      *
      * @param dealer
-     * @param void
+     * @param gamers
      */
-    public void getWinner(Dealer dealer, Gamers gamers) {
+    public Gamers judgeWinner(Dealer dealer, Gamers gamers) {
         //== 딜러보다 숫자가 높으면 우승 ==//
-        int dealerPoint = dealer.openCards().getpointSum();
+        int dealerPoint = dealer.openCards()
+                                .getpointSum();
         for (Gamer gamer : gamers.getGamers()) {
-            int playerPoint = gamer.openCards().getpointSum();
-            //== 무승부는 신경쓸게 없다. ==//
-            //== 딜러 우승 시==//
-            if(dealerPoint > playerPoint) {
+            int playerPoint = gamer.openCards()
+                                   .getpointSum();
+            PlayerMoney playerMoney = gamer.getPlayerMoney();
 
+            if(isOverLimit(gamer.openCards())) {
+                playerMoney.calculateResultMoney(playerMoney.getBetMoney(), MoneyOperator.MINUS);
+                continue;
             }
-            if(playerPoint > dealerPoint) {
-
+            if(dealerPoint > playerPoint) {
+                playerMoney.calculateResultMoney(playerMoney.getBetMoney(), MoneyOperator.MINUS);
+            }
+            if(dealerPoint < playerPoint) {
+                playerMoney.calculateResultMoney(playerMoney.getBetMoney(), MoneyOperator.PLUS);
             }
         }
-        return;
+        return gamers;
     }
 
     //== 처음 두 장의 카드 합이 21일 경우 배팅금액의 1.5배를 딜러에게 받는다. ==//
@@ -55,6 +59,7 @@ public class Rule {
                 playerMoney.calculateResultMoney(playerMoney.getBetMoney(), MoneyOperator.PLUS);
                 continue;
             }
+
             //== 게이머만 블랙잭할때 ==//
             if(isBlackJek(gamer.openCards())) {
                 playerMoney.calculateResultMoney(Constant.BONUS_DEALER_OVER_BLACKJEKNUMBER_BLACKJEK, MoneyOperator.MULTIPLY);
@@ -64,9 +69,8 @@ public class Rule {
             if(!isBlackJek) {
                 nonOverPlayers.add(gamer);
             }
-            return new Gamers(nonOverPlayers);
         }
-        return gamers;
+        return new Gamers(nonOverPlayers);
     }
 
     //== 딜러가 21을 초과하면 플레이어들은 가지고 있는 패에 상관 없이 승리해 베팅 금액을 받는다. ==//
@@ -76,18 +80,6 @@ public class Rule {
             return true;
         }
         return false;
-    }
-
-    // 플레이어가 21를 초과하면 배팅금액을 잃는다.
-    public Gamers isGamersOverLimit(Gamers gamers) {
-        for (Gamer gamer : gamers.getGamers()) {
-            Cards cards = gamer.openCards();
-            if(isOverLimit(cards)) {
-                PlayerMoney playerMoney = gamer.getPlayerMoney();
-                playerMoney.calculateResultMoney(playerMoney.getBetMoney(),MoneyOperator.MINUS);
-            }
-        }
-        return gamers;
     }
 
     public void bonusToPlayers(Gamers gamers) {

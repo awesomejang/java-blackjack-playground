@@ -16,6 +16,7 @@ public class Constant {
     public static final String ANNOUNCE_INIT_CARD_STATS = "%s카드: %s";
     public static final String ANNOUNCE_RESULT = ANNOUNCE_INIT_CARD_STATS +  " - " + "결과: %s"; //== 최종 카드 결과 표기 ==//
     public static final String ANNOUNCE_FINAL_RESULT = "%s: %s"; //== 게임 결과 표기 ==//
+    public static final String ANNOUNCE_INTRO_FINAL_RESULT = "## 최종수익";
 
     public static final String STOP_RECEIVE_CARD = "n";
     public static final String CONTINUE_RECEIVE_CARD = "y";

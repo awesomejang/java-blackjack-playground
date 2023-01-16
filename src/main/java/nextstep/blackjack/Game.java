@@ -24,7 +24,6 @@ public class Game {
         ResultView resultView = new ResultView();
         this.gamers = new Gamers(inputView.initPlayers()); // 플레이어 초기화
 
-
         inputView.printFirstDraw(gamers.getGamers()); //== 초기 카드 draw 메세지 ==//
         initPhase(dealer, cardDeck); //== 카드 초기화 ==//
         resultView.printInitCard(dealer, gamers); //== 초기 카드결과 출력 ==//
@@ -32,27 +31,21 @@ public class Game {
         List<Gamer> playingAfterPlayer = ExtraCardDraw(cardDeck, inputView); //== 게이머 추가 draw 로직 ==//
         ExtraDrawDealer(dealer, cardDeck); //== 딜러 카드 추가 draw 로직 ==//
 
-        //== 딜러가 21을 초과하면 배팅금액을 보너스로 지급==//
+        resultView.printDrawResult(dealer, gamers.getGamers());
+        //== 딜러가 21을 초과하면 배팅금액을 상금으로 지급 후 게임종료 =//
         if(rule.isDealerOverLimitPoint(dealer)) {
             System.out.println("딜러 초과");
             rule.bonusToPlayers(gamers);
-            //this.endGame(); // 결과 출력
-            return;
+            resultView.printGameResult(gamers);
+            this.endGame(); // 게임 종료
+            //return;
         }
         //==첫 번째 draw 블랙잭 이벤트==//
         Gamers noOverPlayers = rule.firstBlackJekEvent(this.gamers, dealer);
-        rule.getWinner(dealer, noOverPlayers);
-
-
+        rule.judgeWinner(dealer, noOverPlayers);
 
         //== 게임 결과 출력 ==//
-        resultView.printResultCard(dealer, gamers.getGamers());
-
-        /*for (Gamer gamer : this.gamers.getGamers()) {
-            System.out.println(gamer.getPlayerMoney().getResultMoney());
-        }*/
-        
-
+        resultView.printGameResult(gamers);
     }
     public static void main(String[] args) {
         new Game().play();
