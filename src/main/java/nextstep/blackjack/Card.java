@@ -8,34 +8,36 @@ import java.util.StringJoiner;
  * A,2~10,K,Q,J중 하나를 가지고 있다.
  */
 public class Card {
-    private String pattern;  // 패턴
-    private String denomination; // 숫자
-    private int point; // 카드 점수
+    private Pattern pattern;  // 패턴
+    /*private String denomination; // 숫자
+    private int point; // 카드 점수*/
+    private Denomination denomination;
     //String denomination, int point
-    public Card(String pattern, int index) {
+    public Card(Pattern pattern, Denomination denomination) {
         this.pattern = pattern;
-        this.denomination = numberToDenomination(index);
-        this.point = numberToPoint(index);
+        this.denomination = denomination;
+        /*this.denomination = numberToDenomination(index);
+        this.point = numberToPoint(index);*/
     }
 
-    public String getPattern() {
+    public Pattern getPattern() {
         return pattern;
     }
 
-    public void setPattern(String pattern) {
+    public void setPattern(Pattern pattern) {
         this.pattern = pattern;
     }
 
-    public String getDenomination() {
-        return denomination;
-    }
+//    public String getDenomination() {
+//        return denomination;
+//    }
 
-    public void setDenomination(String denomination) {
-        this.denomination = denomination;
-    }
+//    public void setDenomination(String denomination) {
+//        this.denomination = denomination;
+//    }
 
     public int getPoint() {
-        return point;
+        return this.denomination.getPoint();
     }
 
     @Override
@@ -79,9 +81,55 @@ public class Card {
         }
         return number;
     }
-
-    @Override
+    /*@Override
     public String toString() {
         return getDenomination() + getPattern();
+    }*/
+    public enum Pattern {
+        SPADE("spade"),
+        HEART("heart"),
+        DIAMOND("diamond"),
+        CLOVER("clover");
+        private Pattern() {}
+        Pattern(String value) {
+            this.value = value;
+        }
+        private String value;
+        public String getValue() {
+            return this.value;
+        }
+    }
+
+    public enum Denomination {
+        ACE("A", 1),
+        TWO("2", 2),
+        THREE("3", 3),
+        FOUR("4", 4),
+        FIVE("5", 5),
+        SIX("6", 6),
+        SEVEN("7", 7),
+        EIGHT("8", 8),
+        NINE("9", 9),
+        TEN("10", 10),
+        JACK("J", 10),
+        QUEEN("Q", 10),
+        KING("K", 10);
+        // 점수와 문자 모두
+        private String mark;
+        private int point;
+        Denomination(String mark, int point) {
+            this.mark = mark;
+            this.point = point;
+        }
+        private Denomination() {}
+
+        public String getMark() {
+            return this.mark;
+        }
+        public int getPoint() {
+            return this.point;
+        }
+
+
     }
 }
