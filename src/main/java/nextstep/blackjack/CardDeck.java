@@ -44,11 +44,15 @@ public class CardDeck {
     private List<Card> generateCards() {
         List<Card> cards = new LinkedList<>();
 
-        for (String patten : PATTENS) {
-            for (int i = 1; i <= CARD_COUNT; i++) {
-                Card card = new Card(patten, i);
+        for (Card.Pattern pattern : Card.Pattern.values()) {
+            for (Card.Denomination denomination : Card.Denomination.values()) {
+                Card card = new Card(pattern, denomination);
                 cards.add(card);
             }
+            /*for (int i = 1; i <= CARD_COUNT; i++) {
+                Card card = new Card(pattern.getValue(), i);
+                cards.add(card);
+            }*/
         }
         return cards;
     }
@@ -56,5 +60,8 @@ public class CardDeck {
     public List<Card> getCards() {
         return cards.getCards();
     }
+
+    //private static final String[] PATTENS = {"스페이드", "하트", "다이아몬드", "클로버"};
+
 
 }
