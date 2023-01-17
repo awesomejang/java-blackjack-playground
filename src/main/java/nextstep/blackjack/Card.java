@@ -28,13 +28,9 @@ public class Card {
         this.pattern = pattern;
     }
 
-//    public String getDenomination() {
-//        return denomination;
-//    }
-
-//    public void setDenomination(String denomination) {
-//        this.denomination = denomination;
-//    }
+    public Denomination getDenomination() {
+        return denomination;
+    }
 
     public int getPoint() {
         return this.denomination.getPoint();
@@ -129,7 +125,9 @@ public class Card {
         public int getPoint() {
             return this.point;
         }
-
-
+    }
+    @Override
+    public String toString() {
+        return getDenomination().getMark() + getPattern();
     }
 }
