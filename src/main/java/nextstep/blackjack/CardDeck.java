@@ -1,7 +1,7 @@
 package nextstep.blackjack;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Collections;
+import java.util.Stack;
 
 /**
  * 카드를 플레이어, 딜러에게 제공
@@ -17,7 +17,9 @@ public class CardDeck {
     //private List<Card> cards;
 
     public CardDeck() {
-        this.cards = new Cards(generateCards());
+        Stack<Card> cards = generateCards();
+        Collections.shuffle(cards);
+        this.cards = new Cards(cards);
         //cards = generateCards();
     }
 
@@ -25,10 +27,11 @@ public class CardDeck {
     // 해당하는 list.get()후 list에서 제거 후
     // 카드 리턴
     public Card draw() {
-        Card card = getSelectedCard();
+        //cards.getCards().pop();
+        /*Card card = getSelectedCard();
         cards.removeCard(card);
-        //cards.remove(card);
-        return card;
+        //cards.remove(card);*/
+        return cards.getCards().pop();
     }
 
     /**
@@ -41,8 +44,8 @@ public class CardDeck {
         return cards.getCard(targetIndex);
     }
 
-    private List<Card> generateCards() {
-        List<Card> cards = new LinkedList<>();
+    private Stack<Card> generateCards() {
+        Stack<Card> cards = new Stack<>();
 
         for (Card.Pattern pattern : Card.Pattern.values()) {
             for (Card.Denomination denomination : Card.Denomination.values()) {
@@ -57,7 +60,7 @@ public class CardDeck {
         return cards;
     }
 
-    public List<Card> getCards() {
+    public Stack<Card> getCards() {
         return cards.getCards();
     }
 

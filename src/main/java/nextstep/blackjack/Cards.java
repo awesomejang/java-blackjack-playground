@@ -1,19 +1,19 @@
 package nextstep.blackjack;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 public class Cards {
-    private List<Card> cards = new ArrayList<>();
+    private Stack<Card> cards = new Stack<>();
 
     public Cards() {
     }
 
-    public Cards(List<Card> cards) {
+    public Cards(Stack<Card> cards) {
         this.cards = cards;
     }
 
-    public List<Card> getCards() {
+    public Stack<Card> getCards() {
         return cards;
     }
 
