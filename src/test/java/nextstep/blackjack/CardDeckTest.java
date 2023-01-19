@@ -4,27 +4,25 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
+import java.util.Stack;
 
 
 public class CardDeckTest {
     private CardDeck cardDeck;
-    private static final String[] PATTENS = {"spade", "heart", "diamond", "club"};
+    //private static final CardDeck.Pattern[] PATTENS = {"spade", "heart", "diamond", "club"};
     private static final int CARD_COUNT = 13;
 
     @Test
     @DisplayName("카드가 규칙대로 생성됐는지 테스트")
     void generateCardsTest() {
         cardDeck = new CardDeck();
-        List<Card> cards = cardDeck.getCards();
-        for (String patten : PATTENS) {
-            for (int i = 0; i < CARD_COUNT; i++) {
-                Card targetCard = new Card(patten, i);
+        Stack<Card> cards = cardDeck.getCards();
+        for (Card.Pattern pattern : Card.Pattern.values()) {
+            for (Card.Denomination denomination : Card.Denomination.values()) {
+                Card card = new Card(pattern, denomination);
                 //System.out.println(targetCard.getDenomination() + " " + targetCard.getPattern());
-                Assertions.assertThat(cards.contains(targetCard)).isTrue();
+                Assertions.assertThat(cards.contains(card)).isTrue();
 
             }
         }
