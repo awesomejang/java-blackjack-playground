@@ -38,10 +38,10 @@ public class Rule {
                 playerMoney.calculateResultMoney(playerMoney.getBetMoney(), MoneyOperator.MINUS);
                 continue;
             }
+
             if(dealerPoint > playerPoint) {
                 playerMoney.calculateResultMoney(playerMoney.getBetMoney(), MoneyOperator.MINUS);
-            }
-            if(dealerPoint < playerPoint) {
+            }else {
                 playerMoney.calculateResultMoney(playerMoney.getBetMoney(), MoneyOperator.PLUS);
             }
         }
