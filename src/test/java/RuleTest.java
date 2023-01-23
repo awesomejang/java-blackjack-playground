@@ -20,7 +20,8 @@ public class RuleTest {
 
         Gamer gamer1 = new Gamer("gamer1", 10000);
         Gamer gamer2 = new Gamer("gamer2", 20000);
-        Gamers gamers = new Gamers(Arrays.asList(gamer1, gamer2));
+        Gamer overLimitGamer = new Gamer("overLimitGamer", 30000);
+        Gamers gamers = new Gamers(Arrays.asList(gamer1, gamer2, overLimitGamer));
 
         // when
         dealer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.ACE));
@@ -32,10 +33,15 @@ public class RuleTest {
         gamer2.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.NINE));
         gamer2.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.ACE)); //== 10 ==//
 
+        overLimitGamer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.TEN));
+        overLimitGamer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.JACK));
+        overLimitGamer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.FIVE)); //== 25 ==//
+
         rule.judgeWinner(dealer, gamers);
 
         // then
         Assertions.assertThat(gamer1.getPlayerMoney().getResultMoney()).isEqualTo(10000);
         Assertions.assertThat(gamer2.getPlayerMoney().getResultMoney()).isEqualTo(-20000);
+        Assertions.assertThat(overLimitGamer.getPlayerMoney().getResultMoney()).isEqualTo(-30000);
     }
 }
