@@ -1,7 +1,6 @@
-import nextstep.blackjack.Card;
-import nextstep.blackjack.Dealer;
-import nextstep.blackjack.Gamer;
-import nextstep.blackjack.Gamers;
+import nextstep.blackjack.*;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -9,26 +8,34 @@ import java.util.List;
 
 public class RuleTest {
 
+
+
+
     @Test
+    @DisplayName("딜러와 플레이어의 카드를 확인하여 게임머니를 계산한다.")
     void judgeWinnerTest() {
         // given
         Dealer dealer = new Dealer();
-        Gamer test1 = new Gamer("test1", 10000);
-        Gamer test2 = new Gamer("test2", 20000);
-        Gamers gamers1 = new Gamers(Arrays.asList(test1, test2));
+        Rule rule = new Rule();
+
+        Gamer gamer1 = new Gamer("gamer1", 10000);
+        Gamer gamer2 = new Gamer("gamer2", 20000);
+        Gamers gamers = new Gamers(Arrays.asList(gamer1, gamer2));
 
         // when
         dealer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.ACE));
         dealer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.TEN)); //== 11 ==//
 
-        test1.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.TEN));
-        test1.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.NINE)); //== 19 ==//
+        gamer1.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.TEN));
+        gamer1.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.NINE)); //== 19 ==//
 
-        test2.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.NINE));
-        test2.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.ACE)); //== 10 ==//
+        gamer2.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.NINE));
+        gamer2.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.ACE)); //== 10 ==//
+
+        rule.judgeWinner(dealer, gamers);
 
         // then
-
-
+        Assertions.assertThat(gamer1.getPlayerMoney().getResultMoney()).isEqualTo(10000);
+        Assertions.assertThat(gamer2.getPlayerMoney().getResultMoney()).isEqualTo(-20000);
     }
 }
