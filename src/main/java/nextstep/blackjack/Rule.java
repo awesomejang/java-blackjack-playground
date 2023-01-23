@@ -30,8 +30,7 @@ public class Rule {
         int dealerPoint = dealer.openCards()
                                 .getpointSum();
         for (Gamer gamer : gamers.getGamers()) {
-            int playerPoint = gamer.openCards()
-                                   .getpointSum();
+            int playerPoint = gamer.openCards().getpointSum();
             PlayerMoney playerMoney = gamer.getPlayerMoney();
 
             if(isOverLimit(gamer.openCards())) {

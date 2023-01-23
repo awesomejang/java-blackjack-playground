@@ -25,6 +25,4 @@ public class Gamers {
     public List<Gamer> getGamers() {
         return gamers;
     }
-
-
 }
