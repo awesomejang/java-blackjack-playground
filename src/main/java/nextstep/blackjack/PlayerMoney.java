@@ -25,13 +25,15 @@ public class PlayerMoney {
      * @param moneyOperator
      * @return
      */
-    public int calculateResultMoney(int amount, MoneyOperator moneyOperator) {
+    public int calculateResultMoney(double amount, MoneyOperator moneyOperator) {
         switch (moneyOperator) {
-            case PLUS: return resultMoney += amount;
-            case MINUS: return resultMoney -= amount;
-            case MULTIPLY: return resultMoney += new BigDecimal(betMoney).multiply(new BigDecimal(String.valueOf(amount)))
-                                                                         .intValue();
-            default: return resultMoney;
+            case PLUS: resultMoney += amount;
+                break;
+            case MINUS:resultMoney -= amount;
+                break;
+             case MULTIPLY: return resultMoney += new BigDecimal(betMoney).multiply(new BigDecimal(amount)).intValue();
+                //break;            //default: return resultMoney;
         }
+        return resultMoney;
     }
 }
