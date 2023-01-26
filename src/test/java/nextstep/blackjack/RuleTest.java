@@ -2,6 +2,7 @@ package nextstep.blackjack;
 
 import nextstep.blackjack.*;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RuleTest {
+    private Gamer gamer1 = new Gamer("gamer1", 10000);
+    private Gamer gamer2 = new Gamer("gamer2", 20000);
+
+    /*@BeforeEach
+    void createGamers() {
+        gamer1 = new Gamer("gamer1", 10000);
+        gamer2 = new Gamer("gamer2", 20000);
+    }*/
+
+
     @Test
     @DisplayName("딜러와 플레이어의 카드를 확인하여 게임머니를 계산한다.")
     void judgeWinnerTest() {
@@ -16,8 +27,8 @@ public class RuleTest {
         Dealer dealer = new Dealer();
         Rule rule = new Rule();
 
-        Gamer gamer1 = new Gamer("gamer1", 10000);
-        Gamer gamer2 = new Gamer("gamer2", 20000);
+        /*Gamer gamer1 = new Gamer("gamer1", 10000);
+        Gamer gamer2 = new Gamer("gamer2", 20000);*/
         Gamer overLimitGamer = new Gamer("overLimitGamer", 30000);
         Gamers gamers = new Gamers(Arrays.asList(gamer1, gamer2, overLimitGamer));
 
@@ -35,6 +46,7 @@ public class RuleTest {
         overLimitGamer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.JACK));
         overLimitGamer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.FIVE)); //== 25 ==//
 
+
         rule.judgeWinner(dealer, gamers);
 
         // then
@@ -49,8 +61,8 @@ public class RuleTest {
         // given
         Rule rule = new Rule();
         Dealer dealer = new Dealer();
-        Gamer gamer1 = new Gamer("gamer1", 10000);
-        Gamer gamer2 = new Gamer("gamer2", 20000);
+        /*Gamer gamer1 = new Gamer("gamer1", 10000);
+        Gamer gamer2 = new Gamer("gamer2", 20000);*/
 
         // when
         gamer1.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.QUEEN));
