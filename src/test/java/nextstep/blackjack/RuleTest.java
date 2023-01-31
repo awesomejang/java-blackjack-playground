@@ -92,6 +92,18 @@ public class RuleTest {
         // then
         Assertions.assertThat(overLimitResult).isTrue();
         Assertions.assertThat(nonOverLimitResult).isFalse();
+    }
 
+    @Test
+    @DisplayName("게이머에게 배팅금액 만큼 상금을 지급한다.")
+    void bonusToPlayersTest() {
+        // given
+        int gamer1BetMoney = gamer1.getPlayerMoney().getBetMoney();
+        int gamer2BetMoney = gamer2.getPlayerMoney().getBetMoney();
+        rule.bonusToPlayers(new Gamers(Arrays.asList(gamer1, gamer2)));
+
+        // when & then
+        Assertions.assertThat(gamer1.getPlayerMoney().getResultMoney()).isEqualTo(gamer1BetMoney);
+        Assertions.assertThat(gamer2.getPlayerMoney().getResultMoney()).isEqualTo(gamer2BetMoney);
     }
 }
