@@ -9,7 +9,7 @@ import java.util.StringJoiner;
  * [x] 카드를 오픈한다.
  * [] 2카드의 합계 점수가 16점 이하이면 반드시 1장을 추가로 뽑고, 17점 이상이면 받을 수 없다.
  */
-public class Dealer implements Player{
+public class Dealer implements Player {
     private Cards cards = new Cards();
     private final String name = "딜러";
 
@@ -21,7 +21,7 @@ public class Dealer implements Player{
         if(isReceiveCard()) {
             cards.addCard(card);
         }else {
-            System.out.println("카드의 총 합이 17이상입니다. 더 이상 카드를 받을 수 없습니다.");
+            System.out.println("카드의 총 합이 16이상입니다. 더 이상 카드를 받을 수 없습니다.");
         }
     }
     /**
