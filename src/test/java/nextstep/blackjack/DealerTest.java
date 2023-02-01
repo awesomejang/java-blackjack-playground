@@ -28,8 +28,7 @@ public class DealerTest {
 
         dealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.FIVE));
         Assertions.assertThat(dealer.isReceiveCard()).isFalse();
-
-
-
     }
+
+
 }
