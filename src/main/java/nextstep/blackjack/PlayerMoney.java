@@ -26,14 +26,23 @@ public class PlayerMoney {
      * @return
      */
     public int calculateResultMoney(double amount, MoneyOperator moneyOperator) {
-        switch (moneyOperator) {
+        //int num1 = amount;
+        int target;
+        if(moneyOperator.name().equals("MULTIPLY")) {
+            //target = betMoney;
+            resultMoney += moneyOperator.calculate(amount, betMoney);
+        }else {
+            //target = resultMoney;
+            resultMoney = moneyOperator.calculate(amount, resultMoney);
+        }
+        /*switch (moneyOperator) {
             case PLUS: resultMoney += amount;
                 break;
             case MINUS:resultMoney -= amount;
                 break;
              case MULTIPLY: return resultMoney += new BigDecimal(betMoney).multiply(new BigDecimal(amount)).intValue();
                 //break;            //default: return resultMoney;
-        }
+        }*/
         return resultMoney;
     }
 }
