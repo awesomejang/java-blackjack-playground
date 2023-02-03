@@ -25,6 +25,7 @@ public class Gamer implements Player{
         //this.betAmount = betMoney;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -49,6 +50,7 @@ public class Gamer implements Player{
      * 카드를 한장 받는다.
      * @param card
      */
+    @Override
     public void receiveCard(Card card) {
         this.cards.addCard(card);
         //cards.add(card);
@@ -58,6 +60,7 @@ public class Gamer implements Player{
      * 현재 보유한 카드목록을 출력한다.
      * @return
      */
+    @Override
     public String showCards() {
         StringJoiner stringJoiner = new StringJoiner(Constant.SPLIT_MARK_PLAYERS_NAME);
         //stringJoiner.add("현재 보유 카드목록 \n");

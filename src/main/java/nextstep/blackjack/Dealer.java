@@ -17,6 +17,7 @@ public class Dealer implements Player {
      * 카드를 받는다.
      * @param card
      */
+    @Override
     public void receiveCard(Card card) {
         if(isReceiveCard()) {
             cards.addCard(card);
@@ -36,6 +37,7 @@ public class Dealer implements Player {
      * 현재 보유한 카드목록을 출력한다.
      * @return
      */
+    @Override
     public String showCards() {
         StringJoiner stringJoiner = new StringJoiner(Constant.SPLIT_MARK_PLAYERS_NAME);
         //stringJoiner.add("현재 보유 카드목록 \n");
@@ -54,6 +56,7 @@ public class Dealer implements Player {
         return cards.getpointSum() <= Constant.CAN_RECEIVE_DEALER_POINT;
     }
 
+    @Override
     public String getName() {
         return name;
     }
