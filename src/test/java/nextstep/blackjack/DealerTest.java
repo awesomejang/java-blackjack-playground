@@ -5,9 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class DealerTest {
-
     Dealer dealer = new Dealer();
-
 
     @Test
     @DisplayName("딜러는 카드의 총 합이 16이상이면 더 이상 카드를 받을 수 없다.")
@@ -21,6 +19,7 @@ public class DealerTest {
     }
 
     @Test
+    @DisplayName("카드의 총합이 16이상일 경우 카드를 받을 수 없습니다.")
     void isReceiveCardTest() {
         dealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.JACK));
         dealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.FIVE));
