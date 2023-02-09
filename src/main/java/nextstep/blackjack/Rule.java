@@ -25,12 +25,14 @@ public class Rule {
      * @param dealer
      * @param gamers
      */
+    // TODO
     public Gamers judgeWinner(Dealer dealer, Gamers gamers) {
         //== 딜러보다 숫자가 높으면 우승 ==//
         int dealerPoint = dealer.openCards()
                                 .getpointSum();
         for (Gamer gamer : gamers.getGamers()) {
-            int playerPoint = gamer.openCards().getpointSum();
+            int playerPoint = gamer.openCards()
+                                   .getpointSum();
             PlayerMoney playerMoney = gamer.getPlayerMoney();
 
             if(isOverLimit(gamer.openCards())) {

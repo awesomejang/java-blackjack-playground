@@ -23,11 +23,10 @@ public class RuleTest {
     @DisplayName("딜러와 플레이어의 카드를 확인하여 게임머니를 계산한다.")
     void judgeWinnerTest() {
         // given
-        Dealer dealer = new Dealer();
-//        Rule rule = new Rule();
+        //Dealer dealer = new Dealer();
+        Dealer dealer = TestCardDeck.getDealer();
+//      Rule rule = new Rule();
 
-        /*Gamer gamer1 = new Gamer("gamer1", 10000);
-        Gamer gamer2 = new Gamer("gamer2", 20000);*/
         Gamer overLimitGamer = new Gamer("overLimitGamer", 30000);
         Gamers gamers = new Gamers(Arrays.asList(gamer1, gamer2, overLimitGamer));
 
@@ -45,7 +44,6 @@ public class RuleTest {
         overLimitGamer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.JACK));
         overLimitGamer.receiveCard(new Card(Card.Pattern.DIAMOND, Card.Denomination.FIVE)); //== 25 ==//
 
-
         rule.judgeWinner(dealer, gamers);
 
         // then
@@ -58,40 +56,27 @@ public class RuleTest {
     @DisplayName("처음 두 장의 카드 합이 21(블랙잭)일 경우 배팅금액의 1.5배를 딜러에게 받는다.")
     void firstBlackJekEventTest() {
         // given
-//        Rule rule = new Rule();
         Dealer dealer = new Dealer();
+        Gamer blackJekPlayer = TestCardDeck.getBlackJekGamer("blackJekPlayer", 10000);
         // when
-        gamer1.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.QUEEN));
-        gamer1.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.ACE));
-        gamer1.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.KING)); //== blackjek ==//
-
         gamer2.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.ACE));
         gamer2.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.KING)); //== Non BlackJek ==//
 
-        rule.firstBlackJekEvent(new Gamers(Arrays.asList(gamer1, gamer2)), dealer);
+        rule.firstBlackJekEvent(new Gamers(Arrays.asList(blackJekPlayer, gamer2)), dealer);
 
         // then
-        Assertions.assertThat(gamer1.getPlayerMoney().getResultMoney()).isEqualTo(15000);
+        Assertions.assertThat(blackJekPlayer.getPlayerMoney().getResultMoney()).isEqualTo(15000);
     }
 
     @Test
     @DisplayName("딜러가 21(블랙잭)을 초과하면 boolean(true)를 리턴한다.")
     void isDealerOverLimitPointTest() {
         // given
-        Dealer overDealer = new Dealer();
-        Dealer dealer = new Dealer();
-        // when
-        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.FOUR));
-        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.JACK));
-        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.TEN));
-
-        dealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.FOUR));
-
-        boolean overLimitResult = rule.isDealerOverLimitPoint(overDealer);
-        boolean nonOverLimitResult = rule.isDealerOverLimitPoint(dealer);
-        // then
-        Assertions.assertThat(overLimitResult).isTrue();
-        Assertions.assertThat(nonOverLimitResult).isFalse();
+        Dealer dealer = TestCardDeck.getDealer();
+        Dealer overLimitDealer = TestCardDeck.getOverLimitDealer();
+        // when & then
+        Assertions.assertThat(rule.isDealerOverLimitPoint(overLimitDealer)).isTrue();
+        Assertions.assertThat(rule.isDealerOverLimitPoint(dealer)).isFalse();
     }
 
     @Test
@@ -105,5 +90,16 @@ public class RuleTest {
         // when & then
         Assertions.assertThat(gamer1.getPlayerMoney().getResultMoney()).isEqualTo(gamer1BetMoney);
         Assertions.assertThat(gamer2.getPlayerMoney().getResultMoney()).isEqualTo(gamer2BetMoney);
+    }
+
+    @Test
+    void test() {
+        Dealer overDealer = new Dealer();
+
+        // when
+        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.FOUR));
+        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.JACK));
+        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.TEN));
+        System.out.println(overDealer.openCards().getpointSum());
     }
 }
