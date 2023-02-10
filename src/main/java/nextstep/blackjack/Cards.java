@@ -8,7 +8,6 @@ public class Cards {
 
     public Cards() {
     }
-
     public Cards(Stack<Card> cards) {
         this.cards = cards;
     }
