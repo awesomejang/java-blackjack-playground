@@ -27,10 +27,6 @@ public class CardDeck {
     // 해당하는 list.get()후 list에서 제거 후
     // 카드 리턴
     public Card draw() {
-        //cards.getCards().pop();
-        /*Card card = getSelectedCard();
-        cards.removeCard(card);
-        //cards.remove(card);*/
         return cards.getCards().pop();
     }
 

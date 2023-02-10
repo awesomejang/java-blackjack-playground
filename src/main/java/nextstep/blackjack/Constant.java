@@ -12,17 +12,13 @@ public class Constant {
     public static final int NUMBER_BLACKJEK = 21; // 딜러 초기 허용 최대 점수
     public static final double BONUS_DEALER_OVER_BLACKJEKNUMBER_BLACKJEK = 1.5; // 딜러 초기 허용 최대 점수
     public static final String ANNOUNCE_INIT_GAME = "딜러와 %s에게 " + TOTAL_CNT_INIT_CARD + "장의 카드를 나누었습니다.";
-
     public static final String ANNOUNCE_INIT_CARD_STATS = "%s카드: %s";
     public static final String ANNOUNCE_RESULT = ANNOUNCE_INIT_CARD_STATS +  " - " + "결과: %s"; //== 최종 카드 결과 표기 ==//
     public static final String ANNOUNCE_FINAL_RESULT = "%s: %s"; //== 게임 결과 표기 ==//
     public static final String ANNOUNCE_INTRO_FINAL_RESULT = "## 최종수익";
-
     public static final String STOP_RECEIVE_CARD = "n";
     public static final String CONTINUE_RECEIVE_CARD = "y";
-
     public static final String ANNOUNCE_RECEIVE_EXTRA_CARD = "%s는 한장의 카드를 더 받겠습니까?(예는 " + CONTINUE_RECEIVE_CARD + ", " + "아니요는 " + STOP_RECEIVE_CARD + ")";
-
     public static final String SPLIT_MARK_PLAYERS_NAME =",";
 
     public static final int DEALER_CAN_RECEIVE_POINT = 17;

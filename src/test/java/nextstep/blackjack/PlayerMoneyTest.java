@@ -27,4 +27,6 @@ public class PlayerMoneyTest {
         Assertions.assertThat(playerMoney.getResultMoney()).isEqualTo(20000);
     }
 
+
+
 }
