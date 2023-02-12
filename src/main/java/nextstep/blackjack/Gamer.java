@@ -34,10 +34,6 @@ public class Gamer implements Player{
         return playerMoney;
     }
 
-    /*public int getBetAmount() {
-        return betAmount;
-    }*/
-
     /**
      * 카드를 오픈한다.
      * @return
@@ -53,7 +49,6 @@ public class Gamer implements Player{
     @Override
     public void receiveCard(Card card) {
         this.cards.addCard(card);
-        //cards.add(card);
     }
 
     /**

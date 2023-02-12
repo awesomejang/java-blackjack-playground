@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CardTest {
-
     @Test
     @DisplayName("생성자로 생성한 카드의 패턴과 숫자가 일치한다.")
     void CardCreateTest() {
