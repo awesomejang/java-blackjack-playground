@@ -13,6 +13,7 @@ public class CardTest {
         Card.Pattern diamond = Card.Pattern.DIAMOND;
         Card.Denomination four = Card.Denomination.FOUR;
         // when
+
         Card card = new Card(diamond, four);
         // then
         Assertions.assertThat(card.getPattern()).isEqualTo(diamond);
