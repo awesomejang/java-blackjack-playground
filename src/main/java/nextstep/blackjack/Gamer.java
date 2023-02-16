@@ -48,8 +48,8 @@ public class Gamer implements Player{
      */
     @Override
     public void receiveCard(Card card) {
+
         this.cards.addCard(card);
-        //cards.add(card);
     }
 
     /**

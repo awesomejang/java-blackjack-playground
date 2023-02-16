@@ -59,11 +59,12 @@ public class RuleTest {
         // given
         Dealer dealer = new Dealer();
         Gamer blackJekPlayer = TestCardDeck.getBlackJekGamer("blackJekPlayer", 10000);
-
+        
         // when
         gamer2.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.ACE));
         gamer2.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.KING)); //== Non BlackJek ==//
         rule.firstBlackJekEvent(new Gamers(Arrays.asList(blackJekPlayer, gamer2)), dealer);
+        
 
         // then
         Assertions.assertThat(blackJekPlayer.getPlayerMoney().getResultMoney()).isEqualTo(15000);
@@ -91,16 +92,5 @@ public class RuleTest {
         // when & then
         Assertions.assertThat(gamer1.getPlayerMoney().getResultMoney()).isEqualTo(gamer1BetMoney);
         Assertions.assertThat(gamer2.getPlayerMoney().getResultMoney()).isEqualTo(gamer2BetMoney);
-    }
-
-    @Test
-    void test() {
-        Dealer overDealer = new Dealer();
-
-        // when
-        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.FOUR));
-        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.JACK));
-        overDealer.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.TEN));
-        System.out.println(overDealer.openCards().getpointSum());
     }
 }

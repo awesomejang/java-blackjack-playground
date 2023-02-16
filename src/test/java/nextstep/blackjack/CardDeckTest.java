@@ -4,7 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 
@@ -12,6 +14,16 @@ public class CardDeckTest {
     private CardDeck cardDeck;
     //private static final CardDeck.Pattern[] PATTENS = {"spade", "heart", "diamond", "club"};
     private static final int CARD_COUNT = 13;
+
+    public static <K, V, W> Map<K, V> nMap(K key, W value, Object... rest) {
+        Map<K, V> m = new HashMap<K, V>(3);
+        m.put(key, (V) value);
+        for (int i = 0; i < rest.length; i += 2) {
+            m.put((K) rest[i], (V) rest[i + 1]);
+        }
+        return m;
+    }
+
 
     @Test
     @DisplayName("카드가 규칙대로 생성됐는지 테스트")
@@ -48,6 +60,14 @@ public class CardDeckTest {
             return  "K";
         }
         return String.valueOf(number);
+    }
+
+    @Test
+    void tmpTest() {
+        Map<String, Object> cardSeq = CardDeckTest.nMap("cardSeq", 914);
+        for (String ss : cardSeq.keySet()) {
+            System.out.println(cardSeq.get(ss));
+        }
     }
 
 }
