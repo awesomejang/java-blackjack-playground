@@ -12,6 +12,7 @@ public class CardTest {
         // given
         Card.Pattern diamond = Card.Pattern.DIAMOND;
         Card.Denomination four = Card.Denomination.FOUR;
+
         // when
 
         Card card = new Card(diamond, four);

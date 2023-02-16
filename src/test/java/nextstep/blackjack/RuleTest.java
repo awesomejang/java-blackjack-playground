@@ -55,13 +55,14 @@ public class RuleTest {
     @Test
     @DisplayName("처음 두 장의 카드 합이 21(블랙잭)일 경우 배팅금액의 1.5배를 딜러에게 받는다.")
     void firstBlackJekEventTest() {
+
         // given
         Dealer dealer = new Dealer();
         Gamer blackJekPlayer = TestCardDeck.getBlackJekGamer("blackJekPlayer", 10000);
+
         // when
         gamer2.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.ACE));
         gamer2.receiveCard(new Card(Card.Pattern.CLOVER, Card.Denomination.KING)); //== Non BlackJek ==//
-
         rule.firstBlackJekEvent(new Gamers(Arrays.asList(blackJekPlayer, gamer2)), dealer);
 
         // then

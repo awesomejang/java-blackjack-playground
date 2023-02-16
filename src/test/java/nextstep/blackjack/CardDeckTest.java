@@ -21,7 +21,6 @@ public class CardDeckTest {
         for (Card.Pattern pattern : Card.Pattern.values()) {
             for (Card.Denomination denomination : Card.Denomination.values()) {
                 Card card = new Card(pattern, denomination);
-                //System.out.println(targetCard.getDenomination() + " " + targetCard.getPattern());
                 Assertions.assertThat(cards.contains(card)).isTrue();
 
             }
